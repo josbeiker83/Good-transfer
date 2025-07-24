@@ -1,0 +1,58 @@
+{
+  "short_name": "Good Transfer",
+  "name": "Good Transfer - Transferencias USA a Venezuela",
+  "description": "Transfiere dinero de USA a Venezuela con las mejores tasas y asesoría personalizada",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#10b981",
+  "background_color": "#0f172a",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "es",
+  "categories": ["finance", "business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Contactar WhatsApp",
+      "short_name": "WhatsApp",
+      "description": "Contactar directamente por WhatsApp",
+      "url": "/?action=whatsapp",
+      "icons": [
+        {
+          "src": "icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Cotización Rápida",
+      "short_name": "Cotización",
+      "description": "Solicitar cotización rápida",
+      "url": "/?action=quote",
+      "icons": [
+        {
+          "src": "icon-192x192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}
