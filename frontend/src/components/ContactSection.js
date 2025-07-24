@@ -31,19 +31,65 @@ const ContactSection = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
+    const networkStatus = getNetworkStatus();
+
     try {
-      await axios.post(`${API}/contact`, formData);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        amount: '',
-        message: ''
-      });
+      if (networkStatus.online) {
+        // Online: Submit normally
+        await axios.post(`${API}/contact`, formData);
+        setSubmitStatus('success');
+        
+        // Show notification if permitted
+        showNotification('¡Formulario enviado!', {
+          body: 'Nos contactaremos contigo pronto.',
+          tag: 'form-success'
+        });
+        
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          amount: '',
+          message: ''
+        });
+      } else {
+        // Offline: Store for later sync
+        const stored = await storeFormOffline({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          offline: true
+        });
+        
+        if (stored) {
+          setSubmitStatus('offline');
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            amount: '',
+            message: ''
+          });
+          
+          showNotification('Formulario guardado offline', {
+            body: 'Se enviará cuando tengas conexión.',
+            tag: 'form-offline'
+          });
+        } else {
+          setSubmitStatus('error');
+        }
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
-      setSubmitStatus('error');
+      
+      // Try to store offline as fallback
+      const stored = await storeFormOffline({
+        ...formData,
+        timestamp: new Date().toISOString(),
+        offline: true,
+        error: error.message
+      });
+      
+      setSubmitStatus(stored ? 'offline' : 'error');
     } finally {
       setIsSubmitting(false);
     }
