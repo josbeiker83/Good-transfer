@@ -244,13 +244,23 @@ const ContactSection = () => {
                   className={`p-4 rounded-lg flex items-center space-x-3 ${
                     submitStatus === 'success' 
                       ? 'bg-green-100 text-green-800 border border-green-200' 
+                      : submitStatus === 'offline'
+                      ? 'bg-blue-100 text-blue-800 border border-blue-200'
                       : 'bg-red-100 text-red-800 border border-red-200'
                   }`}
                 >
-                  <FaCheckCircle className="text-xl" />
+                  {submitStatus === 'success' ? (
+                    <FaCheckCircle className="text-xl" />
+                  ) : submitStatus === 'offline' ? (
+                    <FaCloudUploadAlt className="text-xl" />
+                  ) : (
+                    <FaWifi className="text-xl" />
+                  )}
                   <span className="font-medium">
                     {submitStatus === 'success' 
                       ? '¡Formulario enviado exitosamente! Te contactaremos pronto.' 
+                      : submitStatus === 'offline'
+                      ? '📱 Formulario guardado offline. Se enviará automáticamente cuando tengas conexión.'
                       : 'Error al enviar el formulario. Por favor, intenta de nuevo.'}
                   </span>
                 </motion.div>
