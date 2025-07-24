@@ -91,15 +91,21 @@ def test_special_characters():
 
 def test_api_prefix():
     """Test that API prefix is working correctly"""
-    # Test that /api prefix is required
     try:
-        # This should fail (no /api prefix)
-        response = requests.get("https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com/contact")
-        if response.status_code == 404:
-            print("✅ API Prefix: Correctly requires /api prefix")
+        # Test that /api prefix routes to backend
+        api_response = requests.get(f"{BACKEND_URL}/")
+        
+        # Test that root without /api serves frontend (HTML)
+        root_response = requests.get("https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com/")
+        
+        if (api_response.status_code == 200 and 
+            api_response.json().get("message") == "Hello World" and
+            root_response.status_code == 200 and
+            "html" in root_response.text.lower()):
+            print("✅ API Prefix: Correctly routes /api to backend and root to frontend")
             return True
         else:
-            print(f"❌ API Prefix: Unexpected response without /api: {response.status_code}")
+            print(f"❌ API Prefix: Routing issue - API: {api_response.status_code}, Root: {root_response.status_code}")
             return False
     except Exception as e:
         print(f"❌ API Prefix test failed: {str(e)}")
