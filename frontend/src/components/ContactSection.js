@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle } from 'react-icons/fa';
+import { FaWhatsapp, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle, FaWifi, FaCloudUploadAlt } from 'react-icons/fa';
 import axios from 'axios';
+import { storeFormOffline, getNetworkStatus, showNotification } from '../utils/pwaUtils';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
