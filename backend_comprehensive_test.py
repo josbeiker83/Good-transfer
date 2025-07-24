@@ -10,7 +10,7 @@ import uuid
 from datetime import datetime
 import sys
 
-BACKEND_URL = "https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com/api"
+BACKEND_URL = "https://1a1f880a-30d1-4c0f-b974-eb71cc0e8e9c.preview.emergentagent.com/api"
 
 def test_cors_headers():
     """Test CORS configuration"""
@@ -96,7 +96,7 @@ def test_api_prefix():
         api_response = requests.get(f"{BACKEND_URL}/")
         
         # Test that root without /api serves frontend (HTML)
-        root_response = requests.get("https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com/")
+        root_response = requests.get("https://1a1f880a-30d1-4c0f-b974-eb71cc0e8e9c.preview.emergentagent.com/")
         
         if (api_response.status_code == 200 and 
             api_response.json().get("message") == "Hello World" and

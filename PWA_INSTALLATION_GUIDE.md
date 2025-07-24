@@ -29,7 +29,7 @@ La aplicación **Good Transfer** ahora es una **Progressive Web App (PWA)** comp
 ## 📲 CÓMO INSTALAR LA PWA
 
 ### **En Android (Chrome/Edge/Samsung Internet):**
-1. Visita: `https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com`
+1. Visita: `https://1a1f880a-30d1-4c0f-b974-eb71cc0e8e9c.preview.emergentagent.com`
 2. Busca el botón **"📱 Instalar App"** que aparece automáticamente
 3. O usa el menú del navegador **⋮** → **"Agregar a pantalla de inicio"**
 4. Confirma la instalación
@@ -114,9 +114,9 @@ Cuando instalas la PWA, tendrás accesos rápidos:
 ## 🧪 TESTING Y VERIFICACIÓN
 
 ### **URLs para Probar:**
-- **Principal**: `https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com`
-- **Manifest**: `https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com/manifest.json`
-- **Service Worker**: `https://31396ccf-2e42-476d-9162-9d7229558fa0.preview.emergentagent.com/sw.js`
+- **Principal**: `https://1a1f880a-30d1-4c0f-b974-eb71cc0e8e9c.preview.emergentagent.com`
+- **Manifest**: `https://1a1f880a-30d1-4c0f-b974-eb71cc0e8e9c.preview.emergentagent.com/manifest.json`
+- **Service Worker**: `https://1a1f880a-30d1-4c0f-b974-eb71cc0e8e9c.preview.emergentagent.com/sw.js`
 
 ### **Validadores PWA:**
 - **Lighthouse PWA Audit** (Chrome DevTools)
