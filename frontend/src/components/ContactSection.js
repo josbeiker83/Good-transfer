@@ -125,7 +125,7 @@ const ContactSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-100 to-white">
+    <section className="py-20 bg-gradient-to-b from-slate-100 to-white" data-section="contact">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div 
