@@ -35,6 +35,23 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+class ContactForm(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: str = None
+    phone: str
+    amount: float
+    message: str = None
+    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    status: str = Field(default="pending")
+
+class ContactFormCreate(BaseModel):
+    name: str
+    email: str = None
+    phone: str
+    amount: float
+    message: str = None
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
