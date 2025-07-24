@@ -111,11 +111,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Created POST /api/contact, GET /api/contact, and GET /api/contact/{id} endpoints with proper MongoDB integration and error handling"
+      - working: true
+        agent: "testing"
+        comment: "All API endpoints tested successfully. Fixed Pydantic model validation issue for optional fields (email, message) by using Optional[str]. Tests passed: POST /api/contact (valid/minimal/invalid data), GET /api/contact, GET /api/contact/{id}, 404 handling, data persistence, CORS configuration, large amounts, special characters, and API prefix routing."
 
   - task: "Contact Form Data Models"
     implemented: true
@@ -123,11 +126,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Created ContactForm and ContactFormCreate Pydantic models with UUID, timestamp, and validation"
+      - working: true
+        agent: "testing"
+        comment: "Pydantic models working correctly. Fixed validation issue where optional fields (email, message) were typed as 'str = None' instead of 'Optional[str] = None'. Models now properly handle required fields (name, phone, amount) and optional fields (email, message) with proper UUID generation and timestamps."
 
 frontend:
   - task: "Hero Section with Interactive Presentation"
