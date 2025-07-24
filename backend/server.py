@@ -69,6 +69,26 @@ async def get_status_checks():
     status_checks = await db.status_checks.find().to_list(1000)
     return [StatusCheck(**status_check) for status_check in status_checks]
 
+# Contact Form Endpoints
+@api_router.post("/contact", response_model=ContactForm)
+async def create_contact_form(input: ContactFormCreate):
+    contact_dict = input.dict()
+    contact_obj = ContactForm(**contact_dict)
+    _ = await db.contact_forms.insert_one(contact_obj.dict())
+    return contact_obj
+
+@api_router.get("/contact", response_model=List[ContactForm])
+async def get_contact_forms():
+    contact_forms = await db.contact_forms.find().to_list(1000)
+    return [ContactForm(**contact_form) for contact_form in contact_forms]
+
+@api_router.get("/contact/{contact_id}", response_model=ContactForm)
+async def get_contact_form(contact_id: str):
+    contact_form = await db.contact_forms.find_one({"id": contact_id})
+    if not contact_form:
+        raise HTTPException(status_code=404, detail="Contact form not found")
+    return ContactForm(**contact_form)
+
 # Include the router in the main app
 app.include_router(api_router)
 
